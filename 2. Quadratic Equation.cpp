@@ -9,7 +9,7 @@ int main() {
 	if (a == 0) {
 		if (b == 0) {
 			if (c == 0) {
-				cout << "Любое число подзодит";
+				cout << "Every number is a solution";
 			}
 			else {
 				cout << endl;

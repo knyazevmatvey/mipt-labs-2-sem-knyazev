@@ -5,7 +5,7 @@ int main() {
 	int n;
 	cin >> n;
 
-	int ans = 1;
+	long long int ans = 1;
 	for (int i = 1; i < n + 1; i++) {
 		ans = ans * i;
 	}
