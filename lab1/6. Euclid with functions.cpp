@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int lcd(int x, int y){
+int gcd(int x, int y){
 	int a = max(x, y);
 	int b = min(x, y);
 
@@ -22,9 +22,9 @@ int main() {
 	int n, m;
 	cin >> n >> m;
 
-	int nod = lcd(n, m);
+	int nod = gcd(n, m);
 	int nok = n * m / nod;
 
-	cout << "Least common denominator: " << nod << endl;
-	cout << "NOK: " << nok << endl;
+	cout << "Greatest common divisor: " << nod << endl;
+	cout << "Least common denominator: " << nok << endl;
 }
