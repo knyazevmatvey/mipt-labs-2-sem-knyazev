@@ -1,26 +1,21 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 
 int main() {
 	int n;
 	cin >> n;
 
-	vector<int> small;
-	vector<int> big;
-	int m = 2;
-	while (m * m <= n) {
-		if (n % m == 0) {
-			small.push_back(m);
-			if (m * m != n) big.push_back(n / m);
-		}
-		m++;
+	int i = 2;
+	while (i * i <= n) {
+		if (n % i == 0) cout << n / i << " ";
+		i++;
 	}
-	for (int i = 0; i < big.size(); i++) {
-		cout << big[i] << " ";
+	i--;
+	if (i * i == n) i--;
+	while (i >= 2) {
+		if (n % i == 0) cout << i << " ";
+		i--;
 	}
-	for (int i = small.size() - 1; i >= 0; i--) {
-		cout << small[i] << " ";
-	}
+	
 
 }
