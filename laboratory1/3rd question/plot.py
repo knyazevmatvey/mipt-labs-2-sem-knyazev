@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy
 
-max_n = 199;
+max_n = 99;
 t = []
 for i in range(max_n):
     times = [int(x) for x in input().split()]
