@@ -7,19 +7,25 @@ using namespace std;
 const double T = 1;
 const double dv = 0.001;
 const int n_max = 100000;
-const double f_pi = 3.1415925359f;
+const double d_pi = 3.1415925359;
+
+
+float sum(double psi[], double pdf[], unsigned size) {
+	if (size == 0) return 0;
+	if (size == 1) return psi[0] * pdf[0];
+	int new_size = size / 2;
+	double sum_1 = sum(psi, pdf, new_size);
+	for (int i = 0; i < new_size; i++) {
+		pdf++;
+		psi++;
+	}
+	double sum_2 = sum(psi, pdf, size - new_size);
+	return sum_1 + sum_2;
+}
 
 
 float mean(double psi[], double pdf[], double dv, unsigned size) {
-	double sum = 0;
-	double c = 0;
-	for (int i = 0; i < size; i++) {
-		double y = pdf[i] * psi[i] - c;
-		double t = sum + y;
-		c = (t - sum) - y;
-		sum = t;
-	}
-	return sum * dv;
+	return sum(psi, pdf, size) * dv;
 }
 
 
@@ -29,16 +35,16 @@ int main() {
 
 
 	// creating maxwell's pdf and setting psi = ...
+	// (
 	double* pdf = new double[2 * n_max];
 	double* psi = new double[2 * n_max];
 	for (int i = 0; i < 2 * n_max; i++) {
 		double x = i * dv + dv / 2 - n_max * dv;
-		pdf[i] = exp(-x * x / T) / sqrt(f_pi * T);
+		pdf[i] = exp(-x * x / T) / sqrt(d_pi * T);
 		psi[i] = abs(x);
 	}
 
 	// multiplying by 2 since i only integrate over positive x
 	cout << mean(pdf, psi, dv, 2 * n_max);
 
-	// тоже почему-то не сильно лучше чем float
 }
