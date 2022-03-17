@@ -6,7 +6,8 @@ void pyramidal_scheme(int arr[], int n) {
 	// (sorted elements at the end of the loop's body will start from index = right-1)
 	int right = n;
 
-	while (right > 0) {
+	// p. s. right is more than 1 bc smth goes wrong if right = 1
+	while (right > 1) {
 		// setting i to zero and increasing while we can
 		int i = right / 2 - 1;
 
