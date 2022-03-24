@@ -1,8 +1,6 @@
 #include <iostream>
 using namespace std;
 
-int number_of_students = 10;
-
 struct person {
 	char name[20];
 	float score;
@@ -76,6 +74,8 @@ void pyramidal_scheme(person arr[], int n) {
 }
 
 int main() {
+	int number_of_students;
+	cin >> number_of_students;
 	person* students = new person[number_of_students];
 
 	for (int i = 0; i < number_of_students; i++) {
