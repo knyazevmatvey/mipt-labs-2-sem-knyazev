@@ -1,3 +1,6 @@
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
 #include <iostream>
 using namespace std;
 
@@ -61,7 +64,7 @@ void node_pop(Node** head_ptr) {
 		else {
 			*head_ptr = nullptr;
 		}
-		// По идее надо удалить current->field, но компилятор ругается на следующее
+		// пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ current->field, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		// delete current->field;
 		delete current;
 	}
@@ -199,7 +202,7 @@ struct List {
 };
 
 int main() {
-	bool want_to_test = false;
+	bool want_to_test = true;
 	if (want_to_test) {
 		// testing
 		List a(1);
@@ -258,5 +261,7 @@ int main() {
 
 
 		cout << "end.";
+
+		_CrtDumpMemoryLeaks();
 	}
 }
