@@ -235,6 +235,8 @@ int main() {
 		cout << "deleted element by index 0: ";
 		a.delete_by_index(0);
 		a.print_list();
+
+		a.delete_list();
 	}
 }
 

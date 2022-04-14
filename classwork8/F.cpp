@@ -36,13 +36,31 @@ struct Stack {
 		return ans;
 	}
 
-	bool is_empty() {
-		return (top == nullptr);
-	}
-
-	int Top() {
+	int get_top() {
 		if (top != nullptr) return (top->field);
-		else return -1;
+		else return -100;
 	}
 };
 
+
+int main() {
+	Stack st;
+	while (true) {
+		char temp = cin.get();
+		if (temp == '\n') break;
+
+		int num = temp - '0';
+		if ((0 <= num) && (num <= 9)) st.push(num);
+
+		if ((temp == '+') || (temp == '-') || (temp == '*') || (temp == '/')) {
+			int b = st.pop();
+			int a = st.pop();
+
+			if (temp == '+') st.push(a + b);
+			if (temp == '-') st.push(a - b);
+			if (temp == '*') st.push(a * b);
+			if (temp == '/') st.push(a / b);
+		}
+	}
+	cout << st.get_top();
+}
