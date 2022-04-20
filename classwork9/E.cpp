@@ -1,27 +1,14 @@
 #include <iostream>
 using namespace std;
 
-int* add(int* arr, int value, int size) {
-	int* new_arr = new int[size + 1];
-	for (int i = 0; i < size; i++) new_arr[i] = arr[i];
-	new_arr[size] = value;
-	delete[] arr;
-	return new_arr;
-}
 
-bool is_in_arr(int* arr, int value, int size) {
-	bool ans = false;
-	for (int i = 0; i < size; i++) if (arr[i] == value) ans = true;
-	return ans;
-}
-
-
-// i'm not sure if it is working, i didn't test it at all
+// Принимаю на вход количество вершин + матрицу смежности
 int main() {
 	// n -- количество вершин, m -- количество ребер
 	int n, m;
 	cin >> n;
 
+	// создаем массив для хранения матрицы смежности и считываем его
 	int** a = new int* [n];
 	for (int i = 0; i < n; i++) a[i] = new int[n];
 
@@ -31,21 +18,23 @@ int main() {
 		}
 	}
 
-	// counting the number of line
+	// counting the number of lines
 	m = 0;
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j < n; j++) {
-			m++;
+			if (a[i][j] != 0) m++;
 		}
 	m = m / 2;
 
 	// ans[i][j] = weight, if the i-th vertice is connected to the m-th line
 	int** ans = new int* [n];
-	for (int i = 0; i < n; i++) a[i] = new int[m];
+	for (int i = 0; i < n; i++) ans[i] = new int[m];
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++) ans[i][j] = 0;
 
 	int current = 0;	// the number of the line we're adding
 	while (true) {
-		// checking if we're done
+		// checking if we're done (if we deleted all the elements from a and added them to ans
 		bool finished = true;
 		for (int i = 0; i < n; i++) 
 			for (int j = 0; j < n; j++) {
@@ -71,6 +60,7 @@ int main() {
 
 		ans[i_first][current] = weight;
 		ans[j_first][current] = weight;
+		current++;
 	}
 
 	for (int i = 0; i < n; i++)
