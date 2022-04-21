@@ -70,4 +70,8 @@ int main() {
 			if ((j == m - 1) && (i != n - 1)) cout << endl;
 		}
 
+	for (int i = 0; i < n; i++) delete[] ans[i];
+	for (int i = 0; i < n; i++) delete[] a[i];
+	delete ans;
+	delete a;
 }
